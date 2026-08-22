@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Single-page portfolio template for LittleLycanLord."
+    />
+    <title>LittleLycanLord | Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#home">Skip to main content</a>
+
+    <header id="home" class="hero section">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__intro">Welcome to</p>
+        <h1 class="hero__name">LittleLycanLord</h1>
+        <p class="hero__tagline">Game Developer • Programmer • Builder</p>
+        <nav class="hero__nav" aria-label="Section navigation">
+          <a href="#about">Who am I?</a>
+          <a href="#career">My Career</a>
+          <a href="#projects">My Projects</a>
+          <a href="#contact">Contact Me</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="about" class="section">
+        <div class="section__heading">
+          <h2>Who am I?</h2>
+          <p>Horizontal profile cards with image-left and text-right content.</p>
+        </div>
+
+        <div class="about-ribbon" aria-label="About me cards">
+          <article class="about-card">
+            <img
+              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+              alt="Workspace desk with laptop and notes"
+              loading="lazy"
+            />
+            <div>
+              <h3>Builder mindset</h3>
+              <p>
+                I enjoy turning ideas into practical software, with a focus on clean
+                architecture, maintainability, and impactful user experiences.
+              </p>
+            </div>
+          </article>
+
+          <article class="about-card">
+            <img
+              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+              alt="Retro gaming console controller on a lit desk"
+              loading="lazy"
+            />
+            <div>
+              <h3>Creative developer</h3>
+              <p>
+                I blend programming and game development to craft interactive systems
+                that balance technical performance with visual polish.
+              </p>
+            </div>
+          </article>
+
+          <article class="about-card">
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
+              alt="Team members collaborating in front of a laptop"
+              loading="lazy"
+            />
+            <div>
+              <h3>Collaborative growth</h3>
+              <p>
+                I value teamwork, documentation, and iterative feedback that helps
+                projects evolve from concept to release.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="career" class="section">
+        <div class="section__heading">
+          <h2>My Career</h2>
+          <p>
+            Data-driven horizontal timeline. Update
+            <code>/data/career.json</code> to edit entries.
+          </p>
+          <a class="inline-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"
+            >Connect LinkedIn profile</a
+          >
+        </div>
+        <div
+          id="careerTimeline"
+          class="timeline"
+          role="list"
+          aria-label="Career timeline"
+        ></div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section__heading">
+          <h2>My Projects</h2>
+          <p>
+            Reuses the same timeline UI. Update
+            <code>/data/projects.json</code> to add projects and dates.
+          </p>
+        </div>
+        <div
+          id="projectsTimeline"
+          class="timeline"
+          role="list"
+          aria-label="Projects timeline"
+        ></div>
+      </section>
+
+      <section id="contact" class="section section--contact">
+        <div class="section__heading">
+          <h2>Contact Me</h2>
+          <p>Use these buttons to connect through your preferred platform.</p>
+        </div>
+        <div class="contact-grid">
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.indeed.com/" target="_blank" rel="noopener noreferrer">Indeed</a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:you@example.com">Email</a>
+          <a href="tel:+10000000000">Phone</a>
+        </div>
+      </section>
+    </main>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
