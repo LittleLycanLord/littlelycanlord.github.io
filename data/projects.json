@@ -1,0 +1,20 @@
+[
+  {
+    "period": "May 2023 - Dec 2023",
+    "title": "Project Atlas",
+    "subtitle": "Unreal Engine",
+    "description": "Designed a modular quest system with reusable gameplay components and event-driven progression."
+  },
+  {
+    "period": "Feb 2024 - Jul 2024",
+    "title": "Arena AI Sandbox",
+    "subtitle": "Unity + C#",
+    "description": "Created prototype enemy AI behaviors and telemetry dashboards for balancing encounter difficulty."
+  },
+  {
+    "period": "Nov 2024 - Present",
+    "title": "Portfolio Revamp",
+    "subtitle": "Static Web Stack",
+    "description": "Built a single-page portfolio with data-driven timelines and reusable section components."
+  }
+]
