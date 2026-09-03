@@ -137,6 +137,17 @@
       ↑
     </button>
 
+    <dialog id="lightbox" class="lightbox" aria-modal="true" role="dialog">
+      <div class="lightbox__inner" role="document">
+        <button class="lightbox__close" aria-label="Close (Esc)">×</button>
+        <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">‹</button>
+        <div class="lightbox__stage">
+          <img src="" alt="" class="lightbox__img" />
+        </div>
+        <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">›</button>
+      </div>
+    </dialog>
+
     <script src="script.js" defer></script>
   </body>
 </html>
