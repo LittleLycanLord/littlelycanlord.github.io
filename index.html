@@ -28,6 +28,18 @@
       </div>
     </header>
 
+    <div class="page-shell">
+      <nav class="scrollspy" aria-label="On this page">
+        <p class="scrollspy__label">On this page</p>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Who am I?</a></li>
+          <li><a href="#career">My Career</a></li>
+          <li><a href="#projects">My Projects</a></li>
+          <li><a href="#contact">Contact Me</a></li>
+        </ul>
+      </nav>
+
     <main>
       <section id="about" class="section">
         <div class="section__heading">
@@ -118,15 +130,22 @@
             <code>/data/projects.json</code> to add projects and dates.
           </p>
         </div>
-        <div class="gallery-carousel" data-gallery-carousel>
+        <div
+          class="project-carousel"
+          data-project-carousel
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Projects"
+        >
           <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" aria-label="Previous project">‹</button>
           <div
             id="projectsTimeline"
-            class="timeline gallery-carousel__track"
+            class="timeline project-carousel__track"
             role="list"
             aria-label="Projects timeline"
           ></div>
           <button class="gallery-carousel__button gallery-carousel__button--next" type="button" aria-label="Next project">›</button>
+          <div class="project-carousel__dots" aria-label="Choose project"></div>
         </div>
       </section>
 
@@ -173,6 +192,7 @@
         </div>
       </section>
     </main>
+    </div>
 
     <button id="backToTop" class="back-to-top" aria-label="Back to top">
       ↑

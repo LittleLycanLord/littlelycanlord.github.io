@@ -14,8 +14,13 @@ async function renderTimeline(targetId, dataPath) {
 
     items.forEach((item) => {
       const card = document.createElement("article");
-      card.className = "timeline-item";
-      card.setAttribute("role", "listitem");
+      card.className = targetId === "projectsTimeline"
+        ? "timeline-item project-carousel__slide"
+        : "timeline-item";
+      card.setAttribute("role", targetId === "projectsTimeline" ? "group" : "listitem");
+      if (targetId === "projectsTimeline") {
+        card.setAttribute("aria-roledescription", "slide");
+      }
 
       card.innerHTML = `
         <p class="timeline-date">${item.period}</p>
@@ -50,11 +55,103 @@ function setupBackToTopButton() {
   });
 }
 
-renderTimeline("careerTimeline", "data/career.json");
-renderTimeline("projectsTimeline", "data/projects.json");
+const careerReady = renderTimeline("careerTimeline", "data/career.json");
+const projectsReady = renderTimeline("projectsTimeline", "data/projects.json");
 setupBackToTopButton();
-setupTextDecode();
 setupGalleryCarousels();
+Promise.all([careerReady, projectsReady]).then(() => {
+  setupTextDecode();
+  setupProjectCarousel();
+  setupScrollspy();
+});
+
+function setupProjectCarousel() {
+  const carousel = document.querySelector("[data-project-carousel]");
+  if (!carousel) return;
+
+  const track = carousel.querySelector(".project-carousel__track");
+  const previous = carousel.querySelector(".gallery-carousel__button--prev");
+  const next = carousel.querySelector(".gallery-carousel__button--next");
+  const dots = carousel.querySelector(".project-carousel__dots");
+  const slides = Array.from(track.children);
+  let selectedIndex = 0;
+
+  if (!track || !previous || !next || !dots || !slides.length) return;
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+    dot.type = "button";
+    dot.className = "project-carousel__dot";
+    dot.setAttribute("aria-label", `Show project ${index + 1} of ${slides.length}`);
+    dot.addEventListener("click", () => select(index));
+    dots.appendChild(dot);
+  });
+
+  function select(index) {
+    selectedIndex = Math.max(0, Math.min(index, slides.length - 1));
+    slides.forEach((slide, slideIndex) => {
+      const selected = slideIndex === selectedIndex;
+      slide.classList.toggle("is-selected", selected);
+      slide.setAttribute("aria-hidden", String(!selected));
+      slide.setAttribute("aria-label", `${slideIndex + 1} of ${slides.length}`);
+    });
+    Array.from(dots.children).forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-selected", dotIndex === selectedIndex);
+      dot.setAttribute("aria-current", dotIndex === selectedIndex ? "true" : "false");
+    });
+    previous.disabled = selectedIndex === 0;
+    next.disabled = selectedIndex === slides.length - 1;
+  }
+
+  previous.addEventListener("click", () => select(selectedIndex - 1));
+  next.addEventListener("click", () => select(selectedIndex + 1));
+  track.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      select(selectedIndex - 1);
+    } else if (event.key === "ArrowRight") {
+      event.preventDefault();
+      select(selectedIndex + 1);
+    }
+  });
+  select(0);
+}
+
+function setupScrollspy() {
+  const links = Array.from(document.querySelectorAll(".scrollspy a"));
+  const sections = links
+    .map((link) => document.getElementById(link.hash.slice(1)))
+    .filter(Boolean);
+  if (!links.length || !sections.length) return;
+
+  const headerHeight = getComputedStyle(document.documentElement)
+    .getPropertyValue("--sticky-header-height")
+    .trim() || "0px";
+  const setCurrent = (sectionId) => {
+    links.forEach((link) => {
+      if (link.hash === `#${sectionId}`) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    () => {
+      const activationLine = parseFloat(headerHeight) + window.innerHeight * 0.35;
+      const current = sections
+        .filter((section) => section.getBoundingClientRect().top <= activationLine)
+        .sort((a, b) => b.getBoundingClientRect().top - a.getBoundingClientRect().top)[0];
+
+      setCurrent((current || sections[0]).id);
+    },
+    { rootMargin: `-${headerHeight} 0px -65% 0px`, threshold: [0, 0.2, 0.5, 1] }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+  setCurrent(sections[0].id);
+}
 
 function setupGalleryCarousels() {
   document.querySelectorAll("[data-gallery-carousel]").forEach((carousel) => {

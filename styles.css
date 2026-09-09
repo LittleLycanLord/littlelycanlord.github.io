@@ -1,5 +1,6 @@
 /* Base tokens and reset */
 :root {
+  --sticky-header-height: 0px;
   --bg: #0f172a;
   --bg-soft: #111827;
   --surface: #1f2937;
@@ -56,6 +57,79 @@ html.lightbox-open {
   width: min(100% - 2rem, var(--max-width));
   margin-inline: auto;
   padding: 5rem 0;
+}
+
+.page-shell {
+  display: grid;
+  grid-template-columns: minmax(150px, 190px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  width: min(100% - 2rem, 1320px);
+  margin-inline: auto;
+}
+
+.page-shell main {
+  min-width: 0;
+}
+
+.scrollspy {
+  position: sticky;
+  top: calc(var(--sticky-header-height) + 1.5rem);
+  align-self: start;
+  margin-top: 5rem;
+  padding: 0.2rem 0 0.2rem 1rem;
+  border-left: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+.scrollspy__label {
+  margin: 0 0 0.75rem;
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scrollspy ul {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scrollspy a {
+  position: relative;
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: color 180ms ease, font-weight 180ms ease;
+}
+
+.scrollspy a::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
+}
+
+.scrollspy a:hover,
+.scrollspy a:focus-visible,
+.scrollspy a[aria-current="location"] {
+  color: var(--text);
+  font-weight: 700;
+  outline: none;
+}
+
+.scrollspy a[aria-current="location"]::before {
+  transform: scaleY(1);
 }
 
 .section__heading {
@@ -319,6 +393,72 @@ html.lightbox-open {
   color: var(--text-muted);
 }
 
+/* Project content slider */
+.project-carousel {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.35rem, 2vw, 1rem);
+  width: 100vw;
+  margin-left: calc((100% - 100vw) / 2);
+  padding-inline: clamp(0.5rem, 3vw, 2.5rem);
+}
+
+.project-carousel__track {
+  min-width: 0;
+  overflow: hidden;
+  padding: 1rem 0 0.5rem;
+}
+
+.project-carousel__slide {
+  display: none;
+  width: 100%;
+  min-height: 15rem;
+  animation: project-slide-in 260ms ease both;
+}
+
+.project-carousel__slide.is-selected {
+  display: block;
+}
+
+.project-carousel__dots {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  padding-top: 0.5rem;
+}
+
+.project-carousel__dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  padding: 0;
+  border: 1px solid var(--text-muted);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-carousel__dot.is-selected,
+.project-carousel__dot:hover,
+.project-carousel__dot:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+@keyframes project-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Contact */
 .section--contact {
   padding-bottom: 7rem;
@@ -383,6 +523,55 @@ html.lightbox-open {
 }
 
 @media (max-width: 700px) {
+  .page-shell {
+    display: block;
+    width: 100%;
+  }
+
+  .scrollspy {
+    position: sticky;
+    z-index: 3;
+    top: 0;
+    margin: 0;
+    padding: 0.75rem 1rem;
+    border: 0;
+    background: rgba(2, 6, 23, 0.94);
+    backdrop-filter: blur(12px);
+  }
+
+  .scrollspy__label {
+    margin-bottom: 0.35rem;
+  }
+
+  .scrollspy ul {
+    display: flex;
+    gap: 0.7rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .scrollspy ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollspy a {
+    white-space: nowrap;
+  }
+
+  .scrollspy a::before {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: auto;
+    height: 3px;
+    transform: scaleX(0);
+  }
+
+  .scrollspy a[aria-current="location"]::before {
+    transform: scaleX(1);
+  }
+
   .gallery-carousel {
     gap: 0.25rem;
   }
@@ -417,6 +606,16 @@ html.lightbox-open {
 
   .about-card img {
     max-height: 160px;
+  }
+
+  .project-carousel {
+    gap: 0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-carousel__slide {
+    animation: none;
   }
 }
 
