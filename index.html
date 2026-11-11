@@ -1,214 +1,387 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LittleLycanLord — Game Developer &amp; Software Engineer</title>
     <meta
       name="description"
-      content="Single-page portfolio template for LittleLycanLord."
+      content="Portfolio of LittleLycanLord: game development, gameplay programming, software engineering, and creative technical work."
     />
-    <title>LittleLycanLord | Portfolio</title>
+    <meta name="author" content="LittleLycanLord" />
+    <meta name="theme-color" content="#070a12" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://littlelycanlord.github.io/" />
+
+    <!-- Open Graph / social sharing. Add an og:image (1200×630 PNG) when one exists; see README. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LittleLycanLord" />
+    <meta property="og:title" content="LittleLycanLord — Game Developer &amp; Software Engineer" />
+    <meta
+      property="og:description"
+      content="Game development, gameplay programming, software engineering, and creative technical work."
+    />
+    <meta property="og:url" content="https://littlelycanlord.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="LittleLycanLord — Game Developer &amp; Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Game development, gameplay programming, software engineering, and creative technical work."
+    />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "LittleLycanLord",
+        "url": "https://littlelycanlord.github.io/",
+        "jobTitle": "Game Developer & Software Engineer",
+        "sameAs": ["https://github.com/LittleLycanLord"]
+      }
+    </script>
+
+    <!-- Flag JS support before first paint so enhanced styles never flash. -->
+    <script>
+      document.documentElement.classList.replace("no-js", "js");
+    </script>
+    <script type="module" src="js/main.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#home">Skip to main content</a>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-    <header id="home" class="hero section">
-      <div class="hero__overlay"></div>
-      <div class="hero__content">
-        <p class="hero__intro">Welcome to</p>
-        <h1 class="hero__name">LittleLycanLord</h1>
-        <p class="hero__tagline">Game Developer • Programmer • Builder</p>
-        <nav class="hero__nav" aria-label="Section navigation">
-          <a href="#about">Who am I?</a>
-          <a href="#career">My Career</a>
-          <a href="#projects">My Projects</a>
-          <a href="#contact">Contact Me</a>
-        </nav>
+    <!-- ============================== HERO ============================== -->
+    <header id="home" class="hero">
+      <div class="hero__backdrop" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow">
+            <span class="eyebrow__mark" aria-hidden="true"></span>
+            Game developer · Software engineer
+          </p>
+
+          <h1 class="hero__name" data-decode tabindex="-1">LittleLycanLord</h1>
+
+          <p class="hero__lede">
+            I build games, gameplay systems, and the tools behind them — software that is
+            technically solid, carefully crafted, and enjoyable to use.
+          </p>
+
+          <!--
+            Availability indicator. Remove the `hidden` attribute and edit the text
+            to show it, e.g. "Open to opportunities" or "Currently heads-down on a project".
+          -->
+          <p class="status" hidden>
+            <span class="status__dot" aria-hidden="true"></span>
+            <span>Open to opportunities</span>
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#projects">
+              View projects
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a class="btn btn--ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <aside class="hud" aria-labelledby="hud-title">
+          <div class="hud__header">
+            <span class="hud__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <p id="hud-title" class="hud__title">focus_areas</p>
+          </div>
+          <ul class="hud__list">
+            <li><span class="hud__key">01</span> Game development</li>
+            <li><span class="hud__key">02</span> Gameplay &amp; systems programming</li>
+            <li><span class="hud__key">03</span> Software engineering</li>
+            <li><span class="hud__key">04</span> Creative technical work</li>
+          </ul>
+        </aside>
       </div>
+
+      <nav class="hero__nav" aria-label="Section navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Toolkit</a>
+        <a href="#career">Career</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
     <div class="page-shell">
+      <!-- Sticky scrollspy: sidebar on wide screens, top bar on small screens. -->
       <nav class="scrollspy" aria-label="On this page">
-        <p class="scrollspy__label">On this page</p>
+        <p class="scrollspy__label" aria-hidden="true">On this page</p>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">Who am I?</a></li>
-          <li><a href="#career">My Career</a></li>
-          <li><a href="#projects">My Projects</a></li>
-          <li><a href="#contact">Contact Me</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Toolkit</a></li>
+          <li><a href="#career">Career</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
-    <main>
-      <section id="about" class="section">
-        <div class="section__heading">
-          <h2>Who am I?</h2>
-          <p>Horizontal profile cards with image-left and text-right content.</p>
-        </div>
-
-        <div class="gallery-carousel" data-gallery-carousel aria-label="About me cards">
-          <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" aria-label="Previous about me entry">‹</button>
-          <div class="about-ribbon gallery-carousel__track">
-            <article class="about-card gallery-carousel__item">
-            <img
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
-              alt="Workspace desk with laptop and notes"
-              loading="lazy"
-            />
-            <div>
-              <h3>Builder mindset</h3>
-              <p>
-                I enjoy turning ideas into practical software, with a focus on clean
-                architecture, maintainability, and impactful user experiences.
-              </p>
-            </div>
-            </article>
-
-            <article class="about-card gallery-carousel__item">
-            <img
-              src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
-              alt="Retro gaming console controller on a lit desk"
-              loading="lazy"
-            />
-            <div>
-              <h3>Creative developer</h3>
-              <p>
-                I blend programming and game development to craft interactive systems
-                that balance technical performance with visual polish.
-              </p>
-            </div>
-            </article>
-
-            <article class="about-card gallery-carousel__item">
-            <img
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
-              alt="Team members collaborating in front of a laptop"
-              loading="lazy"
-            />
-            <div>
-              <h3>Collaborative growth</h3>
-              <p>
-                I value teamwork, documentation, and iterative feedback that helps
-                projects evolve from concept to release.
-              </p>
-            </div>
-            </article>
+      <main id="main" tabindex="-1">
+        <!-- ============================== ABOUT ============================== -->
+        <section id="about" class="section" aria-labelledby="about-title">
+          <div class="section__heading">
+            <p class="section__index" aria-hidden="true">01</p>
+            <h2 id="about-title" data-decode>Who am I?</h2>
+            <p>
+              A developer who sits between game development and software engineering — equally
+              interested in how a system is built and how it feels to use.
+            </p>
           </div>
-          <button class="gallery-carousel__button gallery-carousel__button--next" type="button" aria-label="Next about me entry">›</button>
-        </div>
-      </section>
 
-      <section id="career" class="section">
-        <div class="section__heading">
-          <h2>My Career</h2>
-          <p>
-            Data-driven horizontal timeline. Update
-            <code>/data/career.json</code> to edit entries.
-          </p>
-          <a class="inline-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"
-            >Connect LinkedIn profile</a
-          >
-        </div>
-        <div class="gallery-carousel" data-gallery-carousel>
-          <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" aria-label="Previous career entry">‹</button>
-          <div
-            id="careerTimeline"
-            class="timeline gallery-carousel__track"
-            role="list"
-            aria-label="Career timeline"
-          ></div>
-          <button class="gallery-carousel__button gallery-carousel__button--next" type="button" aria-label="Next career entry">›</button>
-        </div>
-      </section>
+          <div class="carousel carousel--peek" data-carousel="peek" data-carousel-label="About me" data-carousel-item="card">
+            <div class="carousel__viewport">
+              <div class="carousel__track">
+                <article class="about-card">
+                  <button
+                    class="about-card__media"
+                    type="button"
+                    data-lightbox="about"
+                    aria-label="Enlarge image: Builder mindset"
+                  >
+                    <img
+                      src="assets/img/about-builder.svg"
+                      alt="Abstract illustration of modular blocks snapping into a grid"
+                      width="640"
+                      height="480"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </button>
+                  <div class="about-card__body">
+                    <p class="about-card__tag">Strength</p>
+                    <h3>Builder mindset</h3>
+                    <p>
+                      I enjoy turning ideas into practical software, with a focus on clean
+                      architecture, maintainability, and impactful user experiences.
+                    </p>
+                  </div>
+                </article>
 
-      <section id="projects" class="section">
-        <div class="section__heading">
-          <h2>My Projects</h2>
-          <p>
-            Reuses the same timeline UI. Update
-            <code>/data/projects.json</code> to add projects and dates.
-          </p>
-        </div>
-        <div
-          class="project-carousel"
-          data-project-carousel
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Projects"
-        >
-          <button class="gallery-carousel__button gallery-carousel__button--prev" type="button" aria-label="Previous project">‹</button>
-          <div
-            id="projectsTimeline"
-            class="timeline project-carousel__track"
-            role="list"
-            aria-label="Projects timeline"
-          ></div>
-          <button class="gallery-carousel__button gallery-carousel__button--next" type="button" aria-label="Next project">›</button>
-          <div class="project-carousel__dots" aria-label="Choose project"></div>
-        </div>
-      </section>
+                <article class="about-card">
+                  <button
+                    class="about-card__media"
+                    type="button"
+                    data-lightbox="about"
+                    aria-label="Enlarge image: Creative developer"
+                  >
+                    <img
+                      src="assets/img/about-creative.svg"
+                      alt="Abstract illustration of a game controller outline over a pixel grid"
+                      width="640"
+                      height="480"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </button>
+                  <div class="about-card__body">
+                    <p class="about-card__tag">Interests</p>
+                    <h3>Creative developer</h3>
+                    <p>
+                      I blend programming and game development to craft interactive systems that
+                      balance technical performance with visual polish.
+                    </p>
+                  </div>
+                </article>
 
-      <section id="contact" class="section section--contact">
-        <div class="section__heading">
-          <h2>Contact Me</h2>
-          <p>Use these buttons to connect through your preferred platform.</p>
-        </div>
-        <div class="contact-grid">
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
-            <svg class="contact-grid__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z" />
-              <rect x="2" y="9" width="4" height="12" rx="1" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://www.indeed.com/" target="_blank" rel="noopener noreferrer">
-            <svg class="contact-grid__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="16" rx="2" />
-              <path d="M8 8h8M8 12h8M8 16h5" />
-            </svg>
-            <span>Indeed</span>
-          </a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
-            <svg class="contact-grid__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M9 19c-4 1.5-4-2-5.5-2m11 4v-3.1c0-1 .1-1.4-.5-2 2.8-.3 5.7-1.4 5.7-6.1a4.8 4.8 0 0 0-1.3-3.4A4.5 4.5 0 0 0 18.3 2S17.2 1.7 15 3.2a13.6 13.6 0 0 0-6 0C6.8 1.7 5.7 2 5.7 2a4.5 4.5 0 0 0-.1 3.3 4.8 4.8 0 0 0-1.3 3.4c0 4.7 2.9 5.8 5.7 6.1-.6.6-.6 1.1-.5 2V21" />
-            </svg>
-            <span>GitHub</span>
-          </a>
-          <a href="mailto:you@example.com">
-            <svg class="contact-grid__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="5" width="18" height="14" rx="2" />
-              <path d="m3 7 9 6 9-6" />
-            </svg>
-            <span>Email</span>
-          </a>
-          <a href="tel:+10000000000">
-            <svg class="contact-grid__icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6.6 3.5 8.7 3a2 2 0 0 1 2.2 1.1l1 2.4a2 2 0 0 1-.4 2.2L10 10.2a14 14 0 0 0 3.8 3.8l1.5-1.5a2 2 0 0 1 2.2-.4l2.4 1a2 2 0 0 1 1.1 2.2l-.5 2.1a2 2 0 0 1-2 1.6A15.5 15.5 0 0 1 4.9 5.5a2 2 0 0 1 1.7-2Z" />
-            </svg>
-            <span>Phone</span>
-          </a>
-        </div>
-      </section>
-    </main>
+                <article class="about-card">
+                  <button
+                    class="about-card__media"
+                    type="button"
+                    data-lightbox="about"
+                    aria-label="Enlarge image: Collaborative growth"
+                  >
+                    <img
+                      src="assets/img/about-collab.svg"
+                      alt="Abstract illustration of connected nodes forming a network"
+                      width="640"
+                      height="480"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </button>
+                  <div class="about-card__body">
+                    <p class="about-card__tag">Working style</p>
+                    <h3>Collaborative growth</h3>
+                    <p>
+                      I value teamwork, documentation, and iterative feedback that helps projects
+                      evolve from concept to release.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================== SKILLS ============================== -->
+        <section id="skills" class="section" aria-labelledby="skills-title">
+          <div class="section__heading">
+            <p class="section__index" aria-hidden="true">02</p>
+            <h2 id="skills-title" data-decode>Toolkit</h2>
+            <p>Languages, engines, and tools I work with.</p>
+          </div>
+          <div id="skillsGrid" class="skills-grid" data-source="data/skills.json" data-kind="skills" aria-busy="true">
+            <p class="data-state" role="status">Loading toolkit…</p>
+            <noscript><p class="data-state">The toolkit list needs JavaScript to load.</p></noscript>
+          </div>
+        </section>
+
+        <!-- ============================== CAREER ============================== -->
+        <section id="career" class="section" aria-labelledby="career-title">
+          <div class="section__heading">
+            <p class="section__index" aria-hidden="true">03</p>
+            <h2 id="career-title" data-decode>My Career</h2>
+            <p>Roles, studies, and milestones along the way.</p>
+          </div>
+          <div class="carousel carousel--peek carousel--timeline" data-carousel="peek" data-carousel-label="Career timeline" data-carousel-item="entry">
+            <div class="carousel__viewport">
+              <div id="careerTimeline" class="carousel__track" data-source="data/career.json" data-kind="career" aria-busy="true">
+                <p class="data-state" role="status">Loading career timeline…</p>
+                <noscript><p class="data-state">The career timeline needs JavaScript to load.</p></noscript>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================== PROJECTS ============================== -->
+        <section id="projects" class="section" aria-labelledby="projects-title">
+          <div class="section__heading">
+            <p class="section__index" aria-hidden="true">04</p>
+            <h2 id="projects-title" data-decode>My Projects</h2>
+            <p>Games, tools, and software I have designed and built.</p>
+          </div>
+          <div class="carousel carousel--single" data-carousel="single" data-carousel-label="Projects" data-carousel-item="project">
+            <div class="carousel__viewport">
+              <div id="projectsTimeline" class="carousel__track" data-source="data/projects.json" data-kind="projects" aria-busy="true">
+                <p class="data-state" role="status">Loading projects…</p>
+                <noscript>
+                  <p class="data-state">
+                    Projects need JavaScript to load. You can browse my repositories on
+                    <a href="https://github.com/LittleLycanLord">GitHub</a> instead.
+                  </p>
+                </noscript>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================== CONTACT ============================== -->
+        <section id="contact" class="section section--contact" aria-labelledby="contact-title">
+          <div class="section__heading">
+            <p class="section__index" aria-hidden="true">05</p>
+            <h2 id="contact-title" data-decode>Contact Me</h2>
+            <p>
+              Interested in working together, or just want to talk games and code? Reach out
+              through any of the channels below.
+            </p>
+          </div>
+
+          <!--
+            Placeholder cards are shown as non-links with a "Placeholder" badge.
+            To publish a channel, replace the <div class="contact-card is-placeholder"> with an
+            <a class="contact-card" href="..."> as in the GitHub card. See README → Contact links.
+          -->
+          <ul class="contact-grid" role="list">
+            <li>
+              <a class="contact-card" href="https://github.com/LittleLycanLord" target="_blank" rel="noopener noreferrer">
+                <svg class="contact-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 19c-4 1.5-4-2-5.5-2m11 4v-3.1c0-1 .1-1.4-.5-2 2.8-.3 5.7-1.4 5.7-6.1a4.8 4.8 0 0 0-1.3-3.4A4.5 4.5 0 0 0 18.3 2S17.2 1.7 15 3.2a13.6 13.6 0 0 0-6 0C6.8 1.7 5.7 2 5.7 2a4.5 4.5 0 0 0-.1 3.3 4.8 4.8 0 0 0-1.3 3.4c0 4.7 2.9 5.8 5.7 6.1-.6.6-.6 1.1-.5 2V21" />
+                </svg>
+                <span class="contact-card__text">
+                  <span class="contact-card__label">GitHub</span>
+                  <span class="contact-card__value">@LittleLycanLord</span>
+                </span>
+                <span class="visually-hidden">(opens in a new tab)</span>
+                <svg class="contact-card__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+              </a>
+            </li>
+            <li>
+              <div class="contact-card is-placeholder">
+                <svg class="contact-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+                <span class="contact-card__text">
+                  <span class="contact-card__label">Email</span>
+                  <span class="contact-card__value">Address not published yet</span>
+                  <span class="badge badge--placeholder">Placeholder</span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="contact-card is-placeholder">
+                <svg class="contact-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z" />
+                  <rect x="2" y="9" width="4" height="12" rx="1" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                <span class="contact-card__text">
+                  <span class="contact-card__label">LinkedIn</span>
+                  <span class="contact-card__value">Profile link not added yet</span>
+                  <span class="badge badge--placeholder">Placeholder</span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="contact-card is-placeholder">
+                <svg class="contact-card__icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="16" rx="2" />
+                  <path d="M8 8h8M8 12h8M8 16h5" />
+                </svg>
+                <span class="contact-card__text">
+                  <span class="contact-card__label">Indeed</span>
+                  <span class="contact-card__value">Profile link not added yet</span>
+                  <span class="badge badge--placeholder">Placeholder</span>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
     </div>
 
-    <button id="backToTop" class="back-to-top" aria-label="Back to top">
-      ↑
+    <footer class="site-footer">
+      <p>
+        <span class="brand-mark" aria-hidden="true"></span>
+        © <span data-year>2026</span> LittleLycanLord
+      </p>
+      <p>
+        Hand-built with HTML, CSS, and JavaScript ·
+        <a href="https://github.com/LittleLycanLord/littlelycanlord.github.io" target="_blank" rel="noopener noreferrer"
+          >View source<span class="visually-hidden"> (opens in a new tab)</span></a
+        >
+      </p>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top" hidden>
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" /></svg>
     </button>
 
-    <dialog id="lightbox" class="lightbox" aria-modal="true" role="dialog">
-      <div class="lightbox__inner" role="document">
-        <button class="lightbox__close" aria-label="Close (Esc)">×</button>
-        <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">‹</button>
-        <div class="lightbox__stage">
-          <img src="" alt="" class="lightbox__img" />
-        </div>
-        <button class="lightbox__nav lightbox__nav--next" aria-label="Next image">›</button>
+    <dialog id="lightbox" class="lightbox" aria-labelledby="lightbox-caption">
+      <div class="lightbox__inner">
+        <button class="lightbox__close icon-btn" type="button" aria-label="Close image viewer">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+        <button class="lightbox__nav lightbox__nav--prev icon-btn" type="button" aria-label="Previous image">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+        </button>
+        <figure class="lightbox__stage">
+          <img class="lightbox__img" src="data:," alt="" />
+          <figcaption id="lightbox-caption" class="lightbox__caption"></figcaption>
+        </figure>
+        <button class="lightbox__nav lightbox__nav--next icon-btn" type="button" aria-label="Next image">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+        </button>
       </div>
     </dialog>
-
-    <script src="script.js" defer></script>
   </body>
 </html>

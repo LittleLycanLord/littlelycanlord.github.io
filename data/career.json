@@ -1,20 +1,29 @@
 [
   {
+    "placeholder": true,
     "period": "Jan 2024",
     "title": "Junior Gameplay Programmer",
     "subtitle": "Studio Name • Remote",
-    "description": "Implemented gameplay features, collaborated with designers, and shipped iterative updates."
+    "type": "Example role",
+    "description": "Implemented gameplay features, collaborated with designers, and shipped iterative updates.",
+    "tags": ["Example tag"]
   },
   {
+    "placeholder": true,
     "period": "Aug 2024",
     "title": "Software Engineer",
     "subtitle": "Company Name • Hybrid",
-    "description": "Built internal tooling, maintained APIs, and improved deployment reliability for the team."
+    "type": "Example role",
+    "description": "Built internal tooling, maintained APIs, and improved deployment reliability for the team.",
+    "tags": ["Example tag"]
   },
   {
+    "placeholder": true,
     "period": "Mar 2025",
     "title": "Senior Developer",
     "subtitle": "Organization Name • On-site",
-    "description": "Led project architecture, mentored teammates, and coordinated cross-functional technical delivery."
+    "type": "Example role",
+    "description": "Led project architecture, mentored teammates, and coordinated cross-functional technical delivery.",
+    "tags": ["Example tag"]
   }
 ]

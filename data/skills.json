@@ -1,0 +1,21 @@
+[
+  {
+    "group": "Web",
+    "items": ["HTML", "CSS", "JavaScript", "Git", "GitHub Pages"]
+  },
+  {
+    "placeholder": true,
+    "group": "Game engines",
+    "items": ["Add an engine", "Add an engine"]
+  },
+  {
+    "placeholder": true,
+    "group": "Languages",
+    "items": ["Add a language", "Add a language"]
+  },
+  {
+    "placeholder": true,
+    "group": "Tools & workflow",
+    "items": ["Add a tool", "Add a tool"]
+  }
+]

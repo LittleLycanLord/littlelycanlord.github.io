@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Modular blocks snapping into a grid">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1526"/><stop offset="1" stop-color="#101a30"/></linearGradient>
+    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#0891b2"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0v32" fill="none" stroke="#1f2b44" stroke-width="1"/></pattern>
+  </defs>
+  <rect width="640" height="480" fill="url(#bg)"/>
+  <rect width="640" height="480" fill="url(#grid)"/>
+  <g transform="translate(320 250)">
+    <g fill="none" stroke-width="3" stroke-linejoin="round">
+      <path d="M-96 0 0-56 96 0 0 56Z" stroke="#334155"/>
+      <path d="M-96 0v64L0 120V56Z" fill="#0f2236" stroke="#22d3ee"/>
+      <path d="M96 0v64L0 120V56Z" fill="#0c1b2c" stroke="#22d3ee"/>
+      <path d="M-96 0 0-56 96 0 0 56Z" fill="url(#a)" opacity=".85" stroke="#67e8f9"/>
+      <path d="M-40-100 16-132 72-100 16-68Z" fill="#a78bfa" opacity=".9" stroke="#c4b5fd"/>
+      <path d="M-40-100v36L16-32v-36ZM72-100v36L16-32v-36Z" fill="#2e1f5c" stroke="#c4b5fd"/>
+    </g>
+    <path d="M16-24v18" stroke="#c4b5fd" stroke-width="3" stroke-dasharray="4 6"/>
+  </g>
+  <g fill="#22d3ee" opacity=".6"><circle cx="96" cy="96" r="3"/><circle cx="544" cy="112" r="3"/><circle cx="520" cy="392" r="3"/><circle cx="120" cy="380" r="3"/></g>
+</svg>

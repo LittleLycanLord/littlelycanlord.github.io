@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>LittleLycanLord</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0b1020"/>
+  <!-- Stylised wolf ears over a hexagonal "L" mark -->
+  <path d="M17 24 21 9l9 10M47 24 43 9l-9 10" fill="none" stroke="url(#g)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M32 18 50 28v18L32 56 14 46V28Z" fill="none" stroke="url(#g)" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M27 29v15h11" fill="none" stroke="#e6edf6" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
