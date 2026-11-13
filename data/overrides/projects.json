@@ -1,0 +1,5 @@
+{
+  "$comment": "Optional enrichment for GitHub projects. Keys under 'overrides' are repo names. 'extra' adds projects that aren't on GitHub. See docs/DATA.md.",
+  "overrides": {},
+  "extra": []
+}

@@ -1,0 +1,13 @@
+# LinkedIn export: only the two files the import script reads may be committed.
+# The full export also contains messages, connections, and contact details.
+content/linkedin/*
+!content/linkedin/Positions.csv
+!content/linkedin/Education.csv
+!content/linkedin/README.md
+# Raw export archives, wherever they land
+Basic_LinkedInDataExport_*
+Complete_LinkedInDataExport_*
+
+# Python
+__pycache__/
+*.pyc
