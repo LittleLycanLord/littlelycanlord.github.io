@@ -1,0 +1,112 @@
+# Keeps the portfolio up to date and publishes it to GitHub Pages.
+#
+#   nightly / manual run / push to production:
+#     test -> sync GitHub + import LinkedIn -> commit data if it changed -> deploy
+#   pull request:
+#     test only
+#
+# One-time setup: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+# See docs/DATA.md ("Automation").
+
+name: Sync and deploy
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # daily 03:17 UTC (off the hour, when Actions is less busy)
+  workflow_dispatch:
+  push:
+    branches: [production]
+  pull_request:
+
+permissions:
+  contents: read
+
+# Never run two syncs/deploys at once; don't cancel a deploy halfway through.
+concurrency:
+  group: sync-and-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate override files
+        run: |
+          python3 - <<'EOF'
+          import sys
+          sys.path.insert(0, "scripts")
+          from pathlib import Path
+          from portfolio_common import load_overrides
+          import sync_github as gh, import_linkedin as li
+          load_overrides(Path("data/overrides/projects.json"), gh.OVERRIDE_SCHEMA, gh.EXTRA_SCHEMA)
+          load_overrides(Path("data/overrides/career.json"), li.OVERRIDE_SCHEMA, li.EXTRA_SCHEMA)
+          print("overrides OK")
+          EOF
+
+  sync:
+    needs: test
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # commit the regenerated data
+    outputs:
+      sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Sync projects from GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/sync_github.py
+      - name: Import career from LinkedIn export
+        run: python3 scripts/import_linkedin.py
+      - name: Commit data if it changed
+        id: commit
+        run: |
+          git add data/generated
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898099+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore(data): sync portfolio data"
+            # Someone may have pushed while this ran; replay on top of it.
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          # Commits pushed with GITHUB_TOKEN don't trigger another workflow run, so this can't loop.
+
+  deploy:
+    needs: sync
+    # Only the production branch is ever published, so test runs on other branches can't replace the live site.
+    if: github.ref == 'refs/heads/production'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.sync.outputs.sha }}
+      - name: Assemble site
+        # Publish only what the browser needs: no scripts, tests, docs, or LinkedIn CSVs.
+        run: |
+          mkdir _site
+          for path in index.html 404.html css js data assets robots.txt sitemap.xml; do
+            if [ -e "$path" ]; then cp -R "$path" _site/; fi
+          done
+          # Overrides are build inputs; demo data is for local previews only.
+          rm -rf _site/data/overrides _site/data/demo
+          echo "Published files:"; find _site -type f | sort
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v5

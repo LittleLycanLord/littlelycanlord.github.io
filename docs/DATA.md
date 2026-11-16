@@ -118,6 +118,24 @@ The example values above are illustrative. Replace them with real details.
 
 `title`, `organization`, `location`, `description`, `employmentType`, `start`, `end`, `highlights`, `tags`, `links`, `order`, `hidden`. Extras also take `kind`.
 
+## Automation
+
+The workflow is [`.github/workflows/sync-and-deploy.yml`](../.github/workflows/sync-and-deploy.yml).
+
+| Trigger | What runs |
+| --- | --- |
+| Every night (03:17 UTC) | tests → sync GitHub → import LinkedIn → commit `data/generated/` if it changed → deploy |
+| Push to `production` (site edits, new CSVs, override changes) | same |
+| **Actions → Sync and deploy → Run workflow** | same, on demand (e.g. right after tagging a repo) |
+| Pull request | tests and override validation only |
+
+- **Only `production` deploys.** A manual run on another branch syncs and commits there, but never replaces the live site.
+- **What gets published:** only the site files (`index.html`, `css/`, `js/`, `data/` minus overrides and demo data, `assets/`, `robots.txt`, `sitemap.xml`). Scripts, tests, docs, and the LinkedIn CSVs stay out of the deployed site, though they remain visible in the public repo.
+- **When nothing changed,** no commit is made. The bot's own data commits don't trigger another run.
+- **If a run fails** (for example, a typo in an override file or a malformed CSV), the live site keeps its last good version. GitHub emails you about failed scheduled runs, and the log names the file and line.
+
+**One-time setup:** in the repo's **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**. Do this when the workflow reaches `production`. Until then, the old branch-based deployment keeps serving the current site.
+
 ## Privacy
 
 Only `Positions.csv` and `Education.csv` may live in `content/linkedin/`. `.gitignore` blocks every other file there, and blocks raw export archives anywhere in the repo. The import script reads only the columns listed in [content/linkedin/README.md](../content/linkedin/README.md). For example, Education's *Notes* and *Activities* columns are never copied.

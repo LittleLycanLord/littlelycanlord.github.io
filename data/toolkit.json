@@ -1,0 +1,6 @@
+{
+  "$comment": "Hand-written toolkit groups shown next to the languages measured from GitHub. Add engines, tools, and workflows you actually use. Each item: { \"group\": \"Name\", \"items\": [\"…\"] }.",
+  "items": [
+    { "group": "Tools & workflow", "items": ["Git", "GitHub", "GitHub Pages", "GitHub Actions"] }
+  ]
+}

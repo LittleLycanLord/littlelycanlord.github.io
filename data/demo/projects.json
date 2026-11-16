@@ -1,0 +1,64 @@
+{
+  "$comment": "FICTIONAL sample data for previewing the layout locally (open http://localhost:8000/?demo). Never deployed.",
+  "schemaVersion": 1,
+  "source": "demo",
+  "syncedAt": "2026-11-16T03:17:00Z",
+  "items": [
+    {
+      "id": "demo-tower-defense",
+      "source": "manual",
+      "title": "Sample Tower Defense",
+      "description": "Fictional demo entry. A wave-based tower defense prototype with data-driven enemy waves and an upgrade tree.",
+      "role": "Gameplay programmer",
+      "languages": [{ "name": "C#", "percent": 82.4 }, { "name": "ShaderLab", "percent": 12.1 }, { "name": "HLSL", "percent": 5.5 }],
+      "tags": ["unity", "game-jam"],
+      "stars": 4,
+      "start": "2026-05",
+      "end": null,
+      "highlights": ["Wave editor built as a custom inspector", "Object pooling for 500+ enemies"],
+      "links": [{ "kind": "repo", "label": "Source code", "url": "https://github.com/" }, { "kind": "demo", "label": "Play it", "url": "https://example.com/" }],
+      "featured": true
+    },
+    {
+      "id": "demo-engine",
+      "source": "manual",
+      "title": "Sample Render Engine",
+      "description": "Fictional demo entry. A small DirectX 11 renderer with a scene graph and an editor UI.",
+      "role": "Solo developer",
+      "languages": [{ "name": "C++", "percent": 91.0 }, { "name": "HLSL", "percent": 6.0 }, { "name": "CMake", "percent": 3.0 }],
+      "tags": ["directx", "graphics"],
+      "stars": 0,
+      "start": "2025-09",
+      "end": "2026-02",
+      "links": [{ "kind": "repo", "label": "Source code", "url": "https://github.com/" }, { "kind": "video", "label": "Showcase video", "url": "https://example.com/" }],
+      "featured": true
+    },
+    {
+      "id": "demo-web-app",
+      "source": "manual",
+      "title": "Sample Tournament Website",
+      "description": "Fictional demo entry. A bracket and schedule site for a local esports event.",
+      "languages": [{ "name": "JavaScript", "percent": 55.0 }, { "name": "HTML", "percent": 25.0 }, { "name": "CSS", "percent": 20.0 }],
+      "tags": ["web"],
+      "stars": 1,
+      "start": "2024-08",
+      "end": "2024-12",
+      "archived": true,
+      "links": [{ "kind": "repo", "label": "Source code", "url": "https://github.com/" }],
+      "featured": false
+    },
+    {
+      "id": "demo-vr",
+      "source": "manual",
+      "title": "Sample VR Escape Room",
+      "description": "Fictional demo entry. A short VR puzzle room exploring physics-based interactions.",
+      "languages": [{ "name": "C#", "percent": 100 }],
+      "tags": ["vr", "unity"],
+      "stars": 0,
+      "start": "2024-01",
+      "end": "2024-04",
+      "links": [{ "kind": "repo", "label": "Source code", "url": "https://github.com/" }],
+      "featured": false
+    }
+  ]
+}

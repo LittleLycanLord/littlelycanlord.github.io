@@ -1,66 +1,101 @@
 /**
- * Entry point. Loads JSON content, renders it, then enhances the page.
- * Each section loads independently, so one broken file never blocks the rest.
+ * Entry point: loads the data, renders each section, and wires page features.
+ * Datasets load independently, so one broken file never blocks the rest; any
+ * failure is shown in the affected section with a "Try again" button.
  */
-import { loadJson, normaliseCareer, normaliseProject, normaliseSkillGroup } from "./data.js";
-import { renderCareerCard, renderProjectCard, renderSkillGroup, renderEmptyState, renderErrorState } from "./render.js";
-import { setupCarousel } from "./carousel.js";
+import { el } from "./dom.js";
+import { DEMO_MODE, loadDataset } from "./data.js";
+import { renderProjects } from "./projects.js";
+import { renderTimeline } from "./timeline.js";
+import { aggregateLanguages, renderToolkit } from "./toolkit.js";
 import { setupLightbox } from "./lightbox.js";
-import { setupScrollspy, setupBackToTop, setupTextDecode } from "./navigation.js";
+import { setupScrollspy } from "./nav.js";
 
-const SECTIONS = {
-  career: { normalise: normaliseCareer, render: renderCareerCard, noun: "career entries" },
-  projects: { normalise: normaliseProject, render: renderProjectCard, noun: "projects" },
-  skills: { normalise: normaliseSkillGroup, render: renderSkillGroup, noun: "toolkit groups" },
+const mounts = {
+  projects: document.getElementById("projectsMount"),
+  timeline: document.getElementById("timelineMount"),
+  toolkit: document.getElementById("toolkitMount"),
 };
 
-async function populate(container) {
-  const config = SECTIONS[container.dataset.kind];
-  const source = container.dataset.source;
-  if (!config || !source) {
-    console.error("[portfolio] Data container is missing a valid data-kind or data-source", container);
-    return;
+function errorNotice(error) {
+  const hint = location.protocol === "file:"
+    ? " This page is opened as a file; serve the folder over HTTP instead (see README)."
+    : "";
+  console.error("[portfolio]", error);
+  const notice = el("div", { className: "data-state data-state--error", attrs: { role: "alert" } }, [
+    el("p", { text: `Something went wrong while loading this section. ${error.message}${hint}` }),
+    el("button", { className: "btn btn--ghost", text: "Try again", attrs: { type: "button" } }),
+  ]);
+  notice.querySelector("button").addEventListener("click", load);
+  return notice;
+}
+
+function setBusy(busy) {
+  Object.values(mounts).forEach((mount) => mount?.setAttribute("aria-busy", String(busy)));
+}
+
+function renderHeroStats(projects, career) {
+  const stats = document.getElementById("heroStats");
+  if (!stats) return;
+  const rows = [
+    ["Projects", projects.length],
+    ["Languages", aggregateLanguages(projects).length],
+    ["Roles", career.filter((e) => e.kind === "work").length],
+  ].filter(([, value]) => value > 0);
+  stats.replaceChildren(...rows.map(([label, value]) => el("div", {}, [el("dt", { text: label }), el("dd", { text: String(value) })])));
+  stats.hidden = rows.length === 0;
+}
+
+function renderSyncedAt(...timestamps) {
+  const node = document.getElementById("syncedAt");
+  const latest = timestamps.filter(Boolean).sort().pop();
+  if (!node || !latest) return;
+  const label = new Date(latest).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+  node.replaceChildren("Data last synced ", el("time", { text: label, attrs: { datetime: latest } }));
+  node.hidden = false;
+}
+
+async function load() {
+  setBusy(true);
+  const [projectsResult, careerResult, toolkitResult] = await Promise.allSettled([
+    loadDataset("projects"),
+    loadDataset("career"),
+    loadDataset("toolkit"),
+  ]);
+  const ok = (result) => (result.status === "fulfilled" ? result.value : null);
+  const projects = ok(projectsResult)?.items ?? [];
+  const career = ok(careerResult)?.items ?? [];
+  const groups = ok(toolkitResult)?.items ?? [];
+
+  // Projects carousel
+  if (projectsResult.status === "fulfilled") renderProjects(mounts.projects, projects);
+  else mounts.projects.replaceChildren(errorNotice(projectsResult.reason));
+
+  // Timeline: render whatever loaded; flag anything that didn't.
+  if (projectsResult.status === "rejected" && careerResult.status === "rejected") {
+    mounts.timeline.replaceChildren(errorNotice(careerResult.reason));
+  } else {
+    renderTimeline(mounts.timeline, [...career, ...projects]);
+    if (careerResult.status === "rejected") mounts.timeline.prepend(errorNotice(careerResult.reason));
   }
 
-  container.setAttribute("aria-busy", "true");
-  const carouselRoot = container.closest("[data-carousel]");
+  // Toolkit
+  renderToolkit(mounts.toolkit, projects, groups);
+  if (toolkitResult.status === "rejected") mounts.toolkit.prepend(errorNotice(toolkitResult.reason));
 
-  try {
-    const raw = await loadJson(source);
-    const entries = raw.map(config.normalise).filter(Boolean);
-    container.replaceChildren(
-      ...(entries.length ? entries.map(config.render) : [renderEmptyState(`No ${config.noun} to show yet.`)])
-    );
-    if (carouselRoot && entries.length) setupCarousel(carouselRoot);
-  } catch (error) {
-    console.error(`[portfolio] Could not load ${source}:`, error);
-    const hint = location.protocol === "file:"
-      ? " Open the site through a local web server (see README) — browsers block data files on file:// pages."
-      : "";
-    container.replaceChildren(
-      renderErrorState(`Sorry — the ${config.noun} could not be loaded.${hint}`, () => populate(container))
-    );
-  } finally {
-    container.setAttribute("aria-busy", "false");
-  }
+  renderHeroStats(projects, career);
+  renderSyncedAt(ok(projectsResult)?.syncedAt, ok(careerResult)?.syncedAt);
+  setBusy(false);
 }
 
 function init() {
   document.querySelectorAll("[data-year]").forEach((node) => {
     node.textContent = String(new Date().getFullYear());
   });
-
-  // Static carousels (About) enhance immediately; data-driven ones after loading.
-  document.querySelectorAll("[data-carousel]").forEach((root) => {
-    if (!root.querySelector("[data-source]")) setupCarousel(root);
-  });
-
+  if (DEMO_MODE) document.getElementById("demoBanner").hidden = false;
   setupLightbox();
   setupScrollspy();
-  setupBackToTop();
-  setupTextDecode();
-
-  document.querySelectorAll("[data-source]").forEach(populate);
+  load();
 }
 
 init();

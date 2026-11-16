@@ -1,0 +1,44 @@
+{
+  "$comment": "FICTIONAL sample data for previewing the layout locally (open http://localhost:8000/?demo). Never deployed.",
+  "schemaVersion": 1,
+  "source": "demo",
+  "syncedAt": "2026-11-16T03:17:00Z",
+  "items": [
+    {
+      "id": "demo-studio-programmer",
+      "kind": "work",
+      "source": "manual",
+      "title": "Junior Gameplay Programmer",
+      "organization": "Example Studio",
+      "location": "Remote",
+      "employmentType": "Full-time",
+      "description": "Fictional demo entry. Builds gameplay features and internal tools.",
+      "highlights": ["Owned the save system", "Cut editor load times with asset caching"],
+      "start": "2026-03",
+      "end": null
+    },
+    {
+      "id": "demo-intern",
+      "kind": "work",
+      "source": "manual",
+      "title": "Software Engineering Intern",
+      "organization": "Sample Corp",
+      "location": "Example City",
+      "employmentType": "Internship",
+      "description": "Fictional demo entry. Worked on a web dashboard for internal reporting.",
+      "start": "2025-06",
+      "end": "2025-08"
+    },
+    {
+      "id": "demo-university",
+      "kind": "education",
+      "source": "manual",
+      "title": "Bachelor of Science, Game Development",
+      "organization": "Example University",
+      "location": "",
+      "description": "",
+      "start": "2022",
+      "end": "2026"
+    }
+  ]
+}

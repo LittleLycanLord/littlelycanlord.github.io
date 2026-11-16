@@ -60,9 +60,9 @@ Carried forward from the previous version: accessibility standards (skip link, f
 
 ## Phases
 
-1. **Data pipeline:** both scripts, JSON schemas, override files, and sample runs against my real GitHub. Testable before any UI exists.
-2. **Automation:** GitHub Action for sync, commit, and deploy, plus the Pages source switch.
-3. **Site rebuild:** new layout, design system, projects carousel, interactive timeline, about, and contact.
+1. **Data pipeline** *(done)*: both scripts, JSON schemas, override files, and sample runs against my real GitHub. Testable before any UI exists.
+2. **Automation** *(done; the Pages source switch happens at merge)*: GitHub Action for sync, commit, and deploy, plus the Pages source switch.
+3. **Site rebuild** *(done)*: new layout, design system, projects carousel, interactive timeline, about, and contact.
 4. **Polish and docs:** responsive, a11y, and performance passes. README guide: "how to add a job" and "how to add a project".
 
 ## What I need to do (owner tasks)
