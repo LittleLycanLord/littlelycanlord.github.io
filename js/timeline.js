@@ -40,7 +40,12 @@ export function renderTimeline(mount, entries) {
     const chip = el("button", {
       className: "chip",
       attrs: { type: "button", "data-kind": kind, "aria-pressed": "true" },
-    }, [KIND_LABELS[kind], el("span", { className: "chip__count", text: String(count) })]);
+    }, [
+      KIND_LABELS[kind],
+      " ",
+      el("span", { className: "chip__count", text: String(count) }),
+      el("span", { className: "visually-hidden", text: count === 1 ? " entry" : " entries" }),
+    ]);
     chip.addEventListener("click", () => {
       if (active.has(kind)) active.delete(kind);
       else active.add(kind);
@@ -68,7 +73,7 @@ export function renderTimeline(mount, entries) {
   const list = el("ol", { className: "timeline__list" });
   const viewport = el("div", {
     className: "timeline__viewport",
-    attrs: { id: viewportId, role: "region", "aria-label": "Timeline entries", tabindex: "0" },
+    attrs: { id: viewportId, role: "region", "aria-label": "Timeline entries" },
   }, [list]);
 
   mount.replaceChildren(
@@ -162,9 +167,13 @@ export function renderTimeline(mount, entries) {
   function updateScrollButtons() {
     // A few pixels of slack: scroll snapping can rest just off the edges.
     const max = viewport.scrollWidth - viewport.clientWidth;
+    const scrollable = max > 8;
     prev.disabled = viewport.scrollLeft <= 8;
     next.disabled = viewport.scrollLeft >= max - 8;
-    scrollControls.hidden = max <= 8;
+    scrollControls.hidden = !scrollable;
+    // Only a scrollable viewport needs to be a tab stop (for arrow-key scrolling).
+    if (scrollable) viewport.setAttribute("tabindex", "0");
+    else viewport.removeAttribute("tabindex");
   }
 
   function scrollByPage(direction) {

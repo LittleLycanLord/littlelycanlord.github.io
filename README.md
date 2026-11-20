@@ -35,7 +35,12 @@ The site itself is plain HTML, CSS, and JavaScript with no framework or build st
 | Add a contact channel | Copy the GitHub card in the `#contact` section of `index.html`. |
 | Show a LinkedIn button in the hero | Follow the comment next to the GitHub button in `index.html`. |
 
-[docs/DATA.md](docs/DATA.md) has every field, the override format, and how the automation works. [docs/PLAN.md](docs/PLAN.md) records the design decisions.
+More detail lives in `docs/`:
+
+- [docs/GUIDE.md](docs/GUIDE.md): step-by-step guides for first-time setup, adding a project, adding a job, and troubleshooting.
+- [docs/DATA.md](docs/DATA.md): every field, the override format, and how the automation works.
+- [docs/REVIEW.md](docs/REVIEW.md): what the rebuild changed and a checklist for testing it.
+- [docs/PLAN.md](docs/PLAN.md): the design decisions.
 
 ## Project structure
 

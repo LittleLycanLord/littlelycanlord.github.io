@@ -42,6 +42,16 @@
       document.documentElement.classList.replace("no-js", "js");
     </script>
     <script type="module" src="js/main.js"></script>
+    <!-- Fetch the whole module graph in parallel instead of discovering imports one level at a time. -->
+    <link rel="modulepreload" href="js/data.js" />
+    <link rel="modulepreload" href="js/dom.js" />
+    <link rel="modulepreload" href="js/format.js" />
+    <link rel="modulepreload" href="js/projects.js" />
+    <link rel="modulepreload" href="js/carousel.js" />
+    <link rel="modulepreload" href="js/timeline.js" />
+    <link rel="modulepreload" href="js/toolkit.js" />
+    <link rel="modulepreload" href="js/lightbox.js" />
+    <link rel="modulepreload" href="js/nav.js" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
