@@ -1,0 +1,5 @@
+{
+  "$comment": "Optional tweaks to LinkedIn-imported entries. Keys under 'overrides' are entry ids from data/generated/career.json. 'extra' adds entries that aren't on LinkedIn. See docs/DATA.md.",
+  "overrides": {},
+  "extra": []
+}
