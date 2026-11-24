@@ -1,5 +1,43 @@
 {
   "$comment": "Optional enrichment for GitHub projects. Keys under 'overrides' are repo names. 'extra' adds projects that aren't on GitHub. See docs/DATA.md.",
-  "overrides": {},
+  "overrides": {
+    "CAPIET-StatesThatMatter": {
+      "title": "States that Matter",
+      "description": "A Unity puzzle-platformer about the states of matter. Players heat, cool, and bond materials to change their phase and get through 15 stages. Built alongside a research paper and prepared for summative playtesting.",
+      "role": "Solo developer",
+      "highlights": [
+        "15 stages covering all six phase changes",
+        "Particle-lattice visuals that show what happens to matter as it changes state",
+        "Mini-dialogue system, level select, and saved progress",
+        "Polished level by level ahead of summative playtesting"
+      ],
+      "tags": ["Unity", "C#", "Puzzle", "Educational"],
+      "featured": true
+    },
+    "LilLycanLordsWorkshopWonders": {
+      "title": "LilLycanLord's Workshop Wonders",
+      "description": "My personal Unity toolkit: reusable systems I bring into new projects, from audio and scene transitions to UI widgets and player movement.",
+      "role": "Solo developer",
+      "highlights": [
+        "Audio, beat, scene-transition, game-event, and dialogue managers",
+        "UI widgets: health bar, combo and store counters, canvas fader",
+        "Billboarding, hoverables, and a general movement system",
+        "Pixel View Maker for a pixelated camera look"
+      ],
+      "tags": ["Unity", "C#", "Tools"],
+      "featured": true
+    },
+    "GDENG01-RenderingShowcase": {
+      "title": "Rendering Showcase",
+      "description": "A team-built Unity scene showcase for a rendering course: themed rooms connected by teleporters, with baked lighting, PBR materials, water, particles, and post-processing.",
+      "role": "Team project (4 contributors)",
+      "highlights": [
+        "Built the crossfader, scene teleporter, and audio manager",
+        "Added water, post-processing, props, and textures"
+      ],
+      "tags": ["Unity", "C#", "Rendering", "Lighting"],
+      "featured": true
+    }
+  },
   "extra": []
 }

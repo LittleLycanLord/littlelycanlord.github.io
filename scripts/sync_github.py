@@ -143,8 +143,6 @@ def to_project(repo: dict, languages: dict[str, int], topic: str, now: datetime)
             warn(f"{repo['name']}: ignoring homepage {homepage!r} (must start with http:// or https://)")
 
     description = (repo.get("description") or "").strip()
-    if not description:
-        warn(f"{repo['name']}: no description on GitHub; add one there or in data/overrides/projects.json")
 
     return {
         "id": repo["name"],
@@ -181,6 +179,10 @@ def build_projects(repos: list[dict], languages_by_repo: dict[str, dict[str, int
     merged = apply_overrides(items, overrides, extra, label="projects overrides",
                              extra_defaults={"source": "manual", "description": "", "featured": False,
                                              "tags": [], "links": [], "end": None})
+    # Warn after overrides, so a description supplied there silences it.
+    for item in merged:
+        if not item.get("description"):
+            warn(f"{item['id']}: no description; add one on GitHub or in data/overrides/projects.json")
     return sort_projects(merged)
 
 

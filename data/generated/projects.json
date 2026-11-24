@@ -1,57 +1,15 @@
 {
   "schemaVersion": 1,
   "source": "github",
-  "syncedAt": "2026-11-23T12:43:29Z",
+  "syncedAt": "2026-11-24T11:42:23Z",
   "user": "LittleLycanLord",
   "topic": "portfolio",
   "items": [
     {
-      "id": "littlelycanlord.github.io",
-      "source": "github",
-      "title": "littlelycanlord.github.io",
-      "description": "Personal portfolio website for my game development and programming projects, as well as my career and academic experiences.",
-      "url": "https://github.com/LittleLycanLord/littlelycanlord.github.io",
-      "language": "JavaScript",
-      "languages": [
-        {
-          "name": "JavaScript",
-          "percent": 37.3
-        },
-        {
-          "name": "Python",
-          "percent": 31.4
-        },
-        {
-          "name": "CSS",
-          "percent": 19.9
-        },
-        {
-          "name": "HTML",
-          "percent": 11.4
-        }
-      ],
-      "tags": [],
-      "stars": 0,
-      "archived": false,
-      "fork": false,
-      "createdAt": "2026-08-22T03:43:57Z",
-      "pushedAt": "2026-11-22T14:49:32Z",
-      "start": "2026-08",
-      "end": null,
-      "links": [
-        {
-          "kind": "repo",
-          "label": "Source code",
-          "url": "https://github.com/LittleLycanLord/littlelycanlord.github.io"
-        }
-      ],
-      "featured": false
-    },
-    {
       "id": "CAPIET-StatesThatMatter",
       "source": "github",
-      "title": "CAPIET StatesThatMatter",
-      "description": "",
+      "title": "States that Matter",
+      "description": "A Unity puzzle-platformer about the states of matter. Players heat, cool, and bond materials to change their phase and get through 15 stages. Built alongside a research paper and prepared for summative playtesting.",
       "url": "https://github.com/LittleLycanLord/CAPIET-StatesThatMatter",
       "language": "C#",
       "languages": [
@@ -76,7 +34,12 @@
           "percent": 0.9
         }
       ],
-      "tags": [],
+      "tags": [
+        "Unity",
+        "C#",
+        "Puzzle",
+        "Educational"
+      ],
       "stars": 0,
       "archived": false,
       "fork": false,
@@ -91,13 +54,20 @@
           "url": "https://github.com/LittleLycanLord/CAPIET-StatesThatMatter"
         }
       ],
-      "featured": false
+      "featured": true,
+      "role": "Solo developer",
+      "highlights": [
+        "15 stages covering all six phase changes",
+        "Particle-lattice visuals that show what happens to matter as it changes state",
+        "Mini-dialogue system, level select, and saved progress",
+        "Polished level by level ahead of summative playtesting"
+      ]
     },
     {
       "id": "LilLycanLordsWorkshopWonders",
       "source": "github",
-      "title": "LilLycanLordsWorkshopWonders",
-      "description": "",
+      "title": "LilLycanLord's Workshop Wonders",
+      "description": "My personal Unity toolkit: reusable systems I bring into new projects, from audio and scene transitions to UI widgets and player movement.",
       "url": "https://github.com/LittleLycanLord/LilLycanLordsWorkshopWonders",
       "language": "C#",
       "languages": [
@@ -126,7 +96,11 @@
           "percent": 0.0
         }
       ],
-      "tags": [],
+      "tags": [
+        "Unity",
+        "C#",
+        "Tools"
+      ],
       "stars": 0,
       "archived": false,
       "fork": false,
@@ -141,13 +115,20 @@
           "url": "https://github.com/LittleLycanLord/LilLycanLordsWorkshopWonders"
         }
       ],
-      "featured": false
+      "featured": true,
+      "role": "Solo developer",
+      "highlights": [
+        "Audio, beat, scene-transition, game-event, and dialogue managers",
+        "UI widgets: health bar, combo and store counters, canvas fader",
+        "Billboarding, hoverables, and a general movement system",
+        "Pixel View Maker for a pixelated camera look"
+      ]
     },
     {
       "id": "GDENG01-RenderingShowcase",
       "source": "github",
-      "title": "GDENG01 RenderingShowcase",
-      "description": "",
+      "title": "Rendering Showcase",
+      "description": "A team-built Unity scene showcase for a rendering course: themed rooms connected by teleporters, with baked lighting, PBR materials, water, particles, and post-processing.",
       "url": "https://github.com/LittleLycanLord/GDENG01-RenderingShowcase",
       "language": "C#",
       "languages": [
@@ -168,7 +149,12 @@
           "percent": 1.9
         }
       ],
-      "tags": [],
+      "tags": [
+        "Unity",
+        "C#",
+        "Rendering",
+        "Lighting"
+      ],
       "stars": 0,
       "archived": false,
       "fork": false,
@@ -181,6 +167,53 @@
           "kind": "repo",
           "label": "Source code",
           "url": "https://github.com/LittleLycanLord/GDENG01-RenderingShowcase"
+        }
+      ],
+      "featured": true,
+      "role": "Team project (4 contributors)",
+      "highlights": [
+        "Built the crossfader, scene teleporter, and audio manager",
+        "Added water, post-processing, props, and textures"
+      ]
+    },
+    {
+      "id": "littlelycanlord.github.io",
+      "source": "github",
+      "title": "littlelycanlord.github.io",
+      "description": "Self-updating portfolio: a projects carousel and career timeline built from GitHub and LinkedIn data, in plain HTML, CSS, and JavaScript.",
+      "url": "https://github.com/LittleLycanLord/littlelycanlord.github.io",
+      "language": "JavaScript",
+      "languages": [
+        {
+          "name": "JavaScript",
+          "percent": 37.3
+        },
+        {
+          "name": "Python",
+          "percent": 31.4
+        },
+        {
+          "name": "CSS",
+          "percent": 19.9
+        },
+        {
+          "name": "HTML",
+          "percent": 11.4
+        }
+      ],
+      "tags": [],
+      "stars": 0,
+      "archived": false,
+      "fork": false,
+      "createdAt": "2026-08-22T03:43:57Z",
+      "pushedAt": "2026-11-24T01:55:45Z",
+      "start": "2026-08",
+      "end": null,
+      "links": [
+        {
+          "kind": "repo",
+          "label": "Source code",
+          "url": "https://github.com/LittleLycanLord/littlelycanlord.github.io"
         }
       ],
       "featured": false
